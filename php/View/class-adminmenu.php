@@ -34,6 +34,7 @@ class AdminMenu extends ComponentAbstract {
 		?>
 			<div class="wrap">
 				<h2><?php esc_html_e( 'The Plugin Settings', 'the-plugin' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'This is a description for this page.', 'the-plugin' ); ?></p>
 			</div>
 		<?php
 	}

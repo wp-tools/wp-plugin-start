@@ -20,6 +20,11 @@ spl_autoload_register( function ( $class ) {
 	// Class name is the last part of the FQN.
 	$class_name = array_pop( $namespace );
 
+	// Remove "Trait" from the class name.
+	if ( 'trait-' === $class_trait ) {
+		$class_name = str_replace( 'Trait', '', $class_name );
+	}
+
 	// For file naming, the namespace is everything but the class name and the root namespace.
 	$namespace = trim( implode( DIRECTORY_SEPARATOR, $namespace ) );
 
