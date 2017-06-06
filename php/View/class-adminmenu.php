@@ -1,6 +1,6 @@
 <?php
 /**
- * Component abstract.
+ * AdminMenu.
  *
  * @package   ThePlugin
  * @copyright Copyright(c) YYYY, Plugin Author
@@ -14,28 +14,28 @@ use ThePlugin\ComponentAbstract;
 
 class AdminMenu extends ComponentAbstract {
 
-	public function register_hooks() {
-		add_action( 'admin_menu', function() {
-			add_menu_page(
-				'The Plugin',
-				'The Plugin',
-				'manage_options',
-				'the-plugin-menu',
-				array( $this, 'display' ),
-				$this->plugin->get_assets_url( 'images/admin-menu-icon.svg' )
-			);
-		} );
+  public function register_hooks() {
+    add_action( 'admin_menu', function() {
+      add_menu_page(
+        'The Plugin',
+        'The Plugin',
+        'manage_options',
+        'the-plugin-menu',
+        array( $this, 'display' ),
+        $this->plugin->get_assets_url( 'images/admin-menu-icon.svg' )
+      );
+    } );
 
 
-		// Register other hooks here.
-	}
+    // Register other hooks here.
+  }
 
-	public function display() {
-		?>
-			<div class="wrap">
-				<h2><?php esc_html_e( 'The Plugin Settings', 'the-plugin' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'This is a description for this page.', 'the-plugin' ); ?></p>
-			</div>
-		<?php
-	}
+  public function display() {
+    ?>
+      <div class="wrap">
+        <h2><?php esc_html_e( 'The Plugin Settings', 'the-plugin' ); ?></h2>
+        <p class="description"><?php esc_html_e( 'This is a description for this page.', 'the-plugin' ); ?></p>
+      </div>
+    <?php
+  }
 }
