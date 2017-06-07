@@ -1,0 +1,258 @@
+#!/bin/bash
+
+###############################################################################
+# Defaults
+###############################################################################
+defaultTemplateRepo="git@github.com:rheinardkorf/wp-plugin-start.git"
+defaultDestinationPath="."
+currentYear=$(date +"%Y")
+defaultAuthor="The Author"
+defaultAuthorURI="https://authorsite.com"
+defaultVersion="0.1-alpha"
+defaultNetworkMode="false"
+defaultTDPath="languages"
+currentDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+###############################################################################
+# Colors and formatting
+###############################################################################
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+###############################################################################
+# CLI Arguments
+###############################################################################
+while [[ $# -gt 0 ]]
+do
+key="$1"
+case $key in
+    -uri|--uri)
+        pluginURI="$2"
+        shift
+    ;;
+    -v|--version)
+        pluginVersion="$2"
+        shift
+    ;;
+    -a|--author)
+        pluginAuthor="$2"
+        shift
+    ;;
+    -auri|--author-uri)
+        pluginAuthorURI="$2"
+        shift
+    ;;
+    -l|--languages-path)
+        pluginLanguagesPath="$2"
+        shift
+    ;;
+    -nw|--network)
+        pluginNetworkEnabled="$2"
+        shift
+    ;;
+    -c|--copyright-year)
+        pluginCopyrightYear="$2"
+        shift
+    ;;
+    -i|--interactive)
+        interactive="yes"
+        shift
+    ;;
+
+    -f|--plugin-file)
+        pluginFile="$2"
+        shift # past argument
+    ;;
+    -t|--template)
+        templateRepo="$2"
+        shift # past argument
+    ;;
+    -p|--path)
+        destinationPath="$2"
+        shift # past argument
+    ;;
+    *)
+        pluginName="$1"
+    ;;
+esac
+shift # past argument or value
+done
+
+# Some string manipulation of plugin name.
+pluginNameLower="$(tr [A-Z] [a-z] <<< "$pluginName")"
+pluginNameLowerDash="${pluginNameLower// /-}"
+pluginNameLowerUnderscore="${pluginNameLower// /_}"
+pluginClass="${pluginName// /}"
+
+# Setup some defaults
+if [ -z "$pluginURI" ] ; then pluginURI="$defaultAuthorURI"; fi
+if [ -z "$pluginVersion" ] ; then pluginVersion="$defaultVersion"; fi
+if [ -z "$pluginAuthor" ] ; then pluginAuthor="$defaultAuthor"; fi
+if [ -z "$pluginAuthorURI" ] ; then pluginAuthorURI="$defaultAuthorURI"; fi
+if [ -z "$pluginLanguagesPath" ] ; then pluginLanguagesPath="$defaultTDPath"; fi
+if [ -z "$pluginNetworkEnabled" ] ; then pluginNetworkEnabled="$defaultNetworkMode"; fi
+if [ -z "$pluginCopyrightYear" ] ; then pluginCopyrightYear="$currentYear"; fi
+if [ -z "$pluginFile" ] ; then pluginFile="${pluginNameLowerDash}.php"; fi
+
+# Use default template if arg not passed
+if [ -z "$templateRepo" ]; then
+    templateRepo="$defaultTemplateRepo"
+fi
+
+# Use default destination if arg not passed
+if [ -z "$destinationPath" ]; then
+    destinationPath="./$pluginNameLowerDash"
+fi
+
+###############################################################################
+# Get input from user
+###############################################################################\
+function e {
+
+    if [ -z "$3" ]; then
+        default=''
+    else
+        default=" [${POWDER_BLUE}$3${WHITE}]"
+    fi
+
+    printf "${RED}${2}${WHITE}${1}${default}: "
+}
+
+if ! [ -z "$interactive" ] ; then
+
+    printf "${YELLOW}Input plugin details...\n"
+    printf "=====================================${WHITE}\n"
+
+    e "Plugin Filename" " " "$pluginFile"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginFile="$userInput"; fi
+
+    e "Plugin Name" " " "$pluginName"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginName="$userInput"; fi
+
+    e "Plugin URI" " " "$pluginURI"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginURI="$userInput"; fi
+
+    e "Plugin Version" " " "$pluginVersion"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginVersion="$userInput"; fi
+
+    e "Plugin Author" " " "$pluginAuthor"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginAuthor="$userInput"; fi
+
+    e "Author URI" " " "$pluginAuthorURI"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginAuthorURI="$userInput"; fi
+
+    e "Network plugin (true|false)" " " "$pluginNetworkEnabled"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginNetworkEnabled="$userInput"; fi
+
+    e "Copyright Year" " " "$pluginCopyrightYear"
+    read userInput
+    if ! [[ -z "$userInput" ]]; then pluginCopyrightYear="$userInput"; fi
+
+    # Some string manipulation of plugin name.
+    pluginNameLower="$(tr [A-Z] [a-z] <<< "$pluginName")"
+    pluginNameLowerDash="${pluginNameLower// /-}"
+    pluginNameLowerUnderscore="${pluginNameLower// /_}"
+    pluginClass="${pluginName// /}"
+fi
+
+pluginNetworkEnabled='Network: ${pluginNetworkEnabled}'
+
+###############################################################################
+# Clone Plugin
+###############################################################################
+printf "${YELLOW}Getting plugin template...\n"
+printf "=====================================${WHITE}\n"
+mkdir -p "$destinationPath"
+cd "$destinationPath"
+cloneCommand="git clone $templateRepo ."
+$($cloneCommand)
+rm -rf .git
+git init
+
+###############################################################################
+# Renaming placeholders
+###############################################################################
+printf "${YELLOW}Renaming placeholders\n${WHITE}"
+
+LC_ALL=C find "." -type f -exec sed -i '' \
+    -e "s/the-plugin/$pluginNameLowerDash/" \
+    -e "s/the_plugin/$pluginNameLowerUnderscore/" \
+    -e "s/ThePlugin/$pluginClass/" \
+    -e "s/The Plugin/$pluginName/" \
+    -e "s,https:\/\/pluginsite.com,$pluginURI," \
+    -e "s/0\.0\.0/$pluginVersion/" \
+    -e "s,http:\/\/authorsite.com,$pluginAuthorURI," \
+    -e "s/Plugin Author/$pluginAuthor/" \
+    -e "s/\/languages/$pluginLanguagesPath/" \
+    -e "s/Network: false/$pluginNetworkEnabled/" \
+    -e "s/YYYY/$pluginCopyrightYear/" \
+    {} \;
+
+$(mv the-plugin.php $pluginFile)
+
+###############################################################################
+# Setup WP-DEV-LIB
+###############################################################################
+printf "${YELLOW}Setup wp-dev-lib...\n"
+printf "=====================================${WHITE}\n"
+git submodule add -b master https://github.com/xwp/wp-dev-lib.git dev-lib
+./dev-lib/install-pre-commit-hook.sh
+ln -s dev-lib/phpunit-plugin.xml phpunit.xml.dist && git add phpunit.xml.dist # (if working with a plugin)
+ln -s dev-lib/.jshintrc . && git add .jshintrc
+ln -s dev-lib/.jscsrc . && git add .jscsrc
+ln -s dev-lib/.eslintrc . && git add .eslintrc
+ln -s dev-lib/.eslintignore . && git add .eslintignore
+ln -s dev-lib/.editorconfig . && git add .editorconfig
+cp dev-lib/.jshintignore . && git add .jshintignore # don't use symlink for this
+
+###############################################################################
+# Setup ESLint
+###############################################################################
+printf "${YELLOW}Setup ESLint support...\n"
+printf "=====================================${WHITE}\n"
+npm install --save-dev eslint
+git add package.json
+echo 'node_modules' >> .gitignore
+git add .gitignore
+
+###############################################################################
+# Setup Travis CI
+###############################################################################
+printf "${YELLOW}Setup Travis CI support...\n${WHITE}"
+cp dev-lib/.travis.yml .
+
+###############################################################################
+# Remove this file
+###############################################################################
+rm generate-wp-plugin
+
+###############################################################################
+# Add initial commit
+###############################################################################
+printf "${YELLOW}Initial commit...\n${WHITE}"
+git add . -A
+git commit -m"Initial commit." --no-verify
+
+printf "${YELLOW}=====================================\n"
+printf "${GREEN}DONE!\n"
+printf "${YELLOW}=====================================${WHITE}\n"
