@@ -12,6 +12,7 @@ defaultVersion="0.1-alpha"
 defaultNetworkMode="false"
 defaultTDPath="languages"
 currentDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+pluginNetworkEnabled=false
 
 ###############################################################################
 # Colors and formatting
@@ -39,7 +40,7 @@ while [[ $# -gt 0 ]]
 do
 key="$1"
 case $key in
-    -uri|--uri)
+    -uri|--uri|-url|--url)
         pluginURI="$2"
         shift
     ;;
@@ -51,7 +52,7 @@ case $key in
         pluginAuthor="$2"
         shift
     ;;
-    -auri|--author-uri)
+    -auri|--author-uri|-aurl)
         pluginAuthorURI="$2"
         shift
     ;;
@@ -201,7 +202,7 @@ LC_ALL=C find "." -type f -exec sed -i '' \
     -e "s/The Plugin/$pluginName/" \
     -e "s,https:\/\/pluginsite.com,$pluginURI," \
     -e "s/0\.0\.0/$pluginVersion/" \
-    -e "s,http:\/\/authorsite.com,$pluginAuthorURI," \
+    -e "s,https:\/\/authorsite.com,$pluginAuthorURI," \
     -e "s/Plugin Author/$pluginAuthor/" \
     -e "s/\/languages/$pluginLanguagesPath/" \
     -e "s/Network: false/$pluginNetworkEnabled/" \
