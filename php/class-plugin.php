@@ -15,10 +15,9 @@ namespace ThePlugin;
  */
 class Plugin extends PluginAbstract {
 
-  /**
-   * Execute this once plugins are loaded. (not the best place for all hooks)
-   */
-  public function plugin_loaded() {
-
-  }
+	/**
+	 * Execute this once plugins are loaded. (not the best place for all hooks)
+	 */
+	public function plugin_loaded() {
+	}
 }

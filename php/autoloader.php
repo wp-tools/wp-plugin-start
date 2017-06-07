@@ -1,13 +1,19 @@
 <?php
-
 /**
  * Plugin Autoloader
+ *
+ * @copyright Copyright(c) YYYY, Plugin Author
+ * @licence http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
+ */
+
+/**
+ * Register Autoloader
  */
 spl_autoload_register( function ( $class ) {
 
 	// Assume we're using namespaces (because that's how the plugin is structured).
 	$namespace = explode( '\\', $class );
-	$root = array_shift( $namespace );
+	$root      = array_shift( $namespace );
 
 	// If a class ends with "Trait" then prefix the filename with 'trait-', else use 'class-'.
 	$class_trait = preg_match( '/Trait$/', $class ) ? 'trait-' : 'class-';

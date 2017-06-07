@@ -4,7 +4,9 @@
  *
  * @package ThePlugin
  */
+
 namespace ThePlugin;
+
 /**
  * Class Test_The_Plugin
  *
@@ -22,6 +24,7 @@ class Test_The_Plugin extends \WP_UnitTestCase {
 		$buffer = ob_get_clean();
 		$this->assertContains( '<div class="error">', $buffer );
 	}
+
 	/**
 	 * Test _the_plugin_php_version_text().
 	 *
