@@ -214,33 +214,33 @@ $(mv the-plugin.php $pluginFile)
 ###############################################################################
 # Setup WP-DEV-LIB
 ###############################################################################
-printf "${YELLOW}Setup wp-dev-lib...\n"
-printf "=====================================${WHITE}\n"
-git submodule add -b master https://github.com/xwp/wp-dev-lib.git dev-lib
-./dev-lib/install-pre-commit-hook.sh
-ln -s dev-lib/phpunit-plugin.xml phpunit.xml.dist && git add phpunit.xml.dist # (if working with a plugin)
-ln -s dev-lib/.jshintrc . && git add .jshintrc
-ln -s dev-lib/.jscsrc . && git add .jscsrc
-ln -s dev-lib/.eslintrc . && git add .eslintrc
-ln -s dev-lib/.eslintignore . && git add .eslintignore
-ln -s dev-lib/.editorconfig . && git add .editorconfig
-cp dev-lib/.jshintignore . && git add .jshintignore # don't use symlink for this
+# printf "${YELLOW}Setup wp-dev-lib...\n"
+# printf "=====================================${WHITE}\n"
+# git submodule add -b master https://github.com/xwp/wp-dev-lib.git dev-lib
+# ./dev-lib/install-pre-commit-hook.sh
+# ln -s dev-lib/phpunit-plugin.xml phpunit.xml.dist && git add phpunit.xml.dist # (if working with a plugin)
+# ln -s dev-lib/.jshintrc . && git add .jshintrc
+# ln -s dev-lib/.jscsrc . && git add .jscsrc
+# ln -s dev-lib/.eslintrc . && git add .eslintrc
+# ln -s dev-lib/.eslintignore . && git add .eslintignore
+# ln -s dev-lib/.editorconfig . && git add .editorconfig
+# cp dev-lib/.jshintignore . && git add .jshintignore # don't use symlink for this
 
 ###############################################################################
 # Setup ESLint
 ###############################################################################
-printf "${YELLOW}Setup ESLint support...\n"
-printf "=====================================${WHITE}\n"
-npm install --save-dev eslint
-git add package.json
-echo 'node_modules' >> .gitignore
-git add .gitignore
+# printf "${YELLOW}Setup ESLint support...\n"
+# printf "=====================================${WHITE}\n"
+# npm install --save-dev eslint
+# git add package.json
+# echo 'node_modules' >> .gitignore
+# git add .gitignore
 
 ###############################################################################
 # Setup Travis CI
 ###############################################################################
-printf "${YELLOW}Setup Travis CI support...\n${WHITE}"
-cp dev-lib/.travis.yml .
+# printf "${YELLOW}Setup Travis CI support...\n${WHITE}"
+# cp dev-lib/.travis.yml .
 
 ###############################################################################
 # Remove this file

@@ -101,3 +101,8 @@ tmp/
 # Composer
 composer.lock
 vendor
+
+# Tests
+tests/data/
+tests/includes/
+coverage/html/

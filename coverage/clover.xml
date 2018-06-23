@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1529731185">
+  <project timestamp="1529731185">
+    <package name="ThePlugin\View">
+      <file name="/app/wordpress/core/wp-content/plugins/plugin/php/View/class-adminmenu.php">
+        <class name="ThePlugin\View\AdminMenu" namespace="ThePlugin\View">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="18" type="method" name="anonymousFunction:18#43" complexity="1" crap="2" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="method" name="display" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <metrics loc="39" ncloc="29" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="13" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="/app/wordpress/core/wp-content/plugins/plugin/php/autoloader.php">
+      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="40" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <metrics loc="51" ncloc="26" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="17" coveredelements="0"/>
+    </file>
+    <package name="ThePlugin">
+      <file name="/app/wordpress/core/wp-content/plugins/plugin/php/class-componentabstract.php">
+        <class name="ThePlugin\ComponentAbstract" namespace="ThePlugin" fullPackage="ThePlugin" package="ThePlugin">
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+        </class>
+        <line num="32" type="method" name="set_plugin" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <metrics loc="43" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+      </file>
+      <file name="/app/wordpress/core/wp-content/plugins/plugin/php/class-plugin.php">
+        <class name="ThePlugin\Plugin" namespace="ThePlugin">
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="21" type="method" name="plugin_loaded" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <metrics loc="23" ncloc="9" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </file>
+      <file name="/app/wordpress/core/wp-content/plugins/plugin/php/class-pluginabstract.php">
+        <class name="ThePlugin\PluginAbstract" namespace="ThePlugin" fullPackage="ThePlugin" package="ThePlugin">
+          <metrics complexity="17" methods="14" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="40" coveredelements="0"/>
+        </class>
+        <line num="72" type="method" name="get_basename" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="83" type="method" name="set_basename" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="93" type="method" name="get_directory" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="104" type="method" name="set_directory" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="116" type="method" name="get_path" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="117" type="stmt" count="0"/>
+        <line num="125" type="method" name="get_file" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <line num="136" type="method" name="set_file" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="146" type="method" name="get_slug" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="157" type="method" name="set_slug" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="169" type="method" name="get_url" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="170" type="stmt" count="0"/>
+        <line num="180" type="method" name="set_url" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="181" type="stmt" count="0"/>
+        <line num="182" type="stmt" count="0"/>
+        <line num="192" type="method" name="get_assets_url" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="193" type="stmt" count="0"/>
+        <line num="203" type="method" name="get_assets_path" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="204" type="stmt" count="0"/>
+        <line num="214" type="method" name="register_component" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="216" type="stmt" count="0"/>
+        <line num="219" type="stmt" count="0"/>
+        <line num="220" type="stmt" count="0"/>
+        <line num="223" type="stmt" count="0"/>
+        <line num="224" type="stmt" count="0"/>
+        <line num="226" type="stmt" count="0"/>
+        <line num="228" type="stmt" count="0"/>
+        <line num="230" type="stmt" count="0"/>
+        <metrics loc="239" ncloc="94" classes="1" methods="14" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="40" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="/app/wordpress/core/wp-content/plugins/plugin/php/class-componentinterface.php">
+      <metrics loc="35" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/app/wordpress/core/wp-content/plugins/plugin/php/class-plugininterface.php">
+      <metrics loc="144" ncloc="36" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/app/wordpress/core/wp-content/plugins/plugin/the-plugin.php">
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="2"/>
+      <line num="70" type="stmt" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="76" type="stmt" count="0"/>
+      <metrics loc="98" ncloc="44" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="3" elements="7" coveredelements="3"/>
+    </file>
+    <metrics files="8" loc="672" ncloc="263" classes="4" methods="18" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="64" coveredstatements="3" elements="82" coveredelements="3"/>
+  </project>
+</coverage>
