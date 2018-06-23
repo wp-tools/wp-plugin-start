@@ -3,7 +3,7 @@
 ###############################################################################
 # Defaults
 ###############################################################################
-defaultTemplateRepo="git@github.com:rheinardkorf/wp-plugin-start.git"
+defaultTemplateRepo="git@github.com:wp-tools/wp-plugin-start.git"
 defaultDestinationPath="."
 currentYear=$(date +"%Y")
 defaultAuthor="The Author"
