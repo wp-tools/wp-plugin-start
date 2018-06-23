@@ -17,7 +17,7 @@ Test variables can be altered (with caution) in `./tests/docker/.env`
 
 ---
 
-You will need tooverride the following in the plugin (or use `generate-wp-plugin` as a script to clone this repo and automatically substiture the bellow):
+You will need to override the following in the plugin (or use `generate-wp-plugin` as a script to clone this repo and automatically substiture the bellow):
 
 - `The Plugin` to be the name of your plugin.
 - `ThePlugin` with the package and namespace of your plugin.
