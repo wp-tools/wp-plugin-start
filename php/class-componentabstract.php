@@ -5,19 +5,18 @@
  * @package   ThePlugin
  * @copyright Copyright(c) YYYY, Plugin Author
  * @licence http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
- *
  */
 
 namespace ThePlugin;
 
 /**
  * Class ComponentAbstract
- *
- * @package ThePlugin
  */
 abstract class ComponentAbstract implements ComponentInterface {
 
 	/**
+	 * Point to the $plugin instance.
+	 *
 	 * @var PluginInterface
 	 */
 	protected $plugin;

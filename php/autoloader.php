@@ -2,6 +2,7 @@
 /**
  * Plugin Autoloader
  *
+ * @package   ThePlugin
  * @copyright Copyright(c) YYYY, Plugin Author
  * @licence http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  */
