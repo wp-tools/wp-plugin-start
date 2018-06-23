@@ -14,7 +14,7 @@ usage:
 	@echo "  test\t\tRun test suite"
 
 test:
-	echo "Updating WordPress Test Suite..."
+	@echo "Updating WordPress Test Suite..."
 	@svn co https://develop.svn.wordpress.org/tags/${WP_VERSION}/tests/phpunit/includes/ ./tests/includes --trust-server-cert --non-interactive -q
 	@svn co https://develop.svn.wordpress.org/tags/${WP_VERSION}/tests/phpunit/data/ ./tests/data --trust-server-cert --non-interactive -q
 	@${WPENV} docker-compose -f tests/docker/docker-compose.yml up -d tests-mysql
