@@ -30,7 +30,7 @@ services:
   tests-mysql:
       image: mariadb:10.3
       ports:
-          - 3306:3306
+          - 3306
       volumes:
           - ${WP_INSTALL_DIR}/db:/var/lib/mysql:rw
       environment:
