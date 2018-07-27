@@ -73,6 +73,7 @@ tmp/
 # NPM #
 #######
 .npmignore
+node_modules
 
 # Always-ignore extensions #
 ########################
